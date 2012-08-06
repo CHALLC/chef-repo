@@ -1,5 +1,5 @@
 name "NTP"
 description "NTP Server"
 run_list [
-    "recipe[NTP]"
+    "recipe[ntp]"
   ]
