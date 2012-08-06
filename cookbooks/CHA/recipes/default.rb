@@ -20,6 +20,6 @@
 template "/root/.ssh/authorized_keys" do
   source "authorized_keys.erb"
   owner "root"
-  group root_group
+  group "root"
   mode "0644"
 end
