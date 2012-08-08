@@ -1,0 +1,25 @@
+com2sec local     localhost       challcmon
+com2sec theworld  default         challcmon
+
+group   MyRWGroup  v1              local
+group   MyROGroup  v1             theworld
+
+view all    included  .1                               80
+
+access MyROGroup ""      any       noauth    exact      all    none   none
+access MyRWGroup ""      any       noauth    exact      all    all    none
+
+syslocation CHA HQ
+syscontact Root <root@localhost> (configure /etc/snmp/snmp.local.conf)
+
+proc cupsd 1 1
+
+
+disk / 1000000000
+
+disk /var/lib/libvirt/DB-Store 1000000000
+disk /var/lib/libvirt/DB-Store2 1000000000
+disk /var/lib/libvirt/ISO_Repo 1000000000
+disk /var/lib/libvirt/Tools 1000000000
+disk /var/lib/libvirt/VM_OS_Storage 1000000000
+disk /var/lib/libvirt/VM_Storage 1000000000
