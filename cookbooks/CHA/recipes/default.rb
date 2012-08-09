@@ -19,3 +19,4 @@
 
 include_recipe "CHA::auth_keys"
 include_recipe "CHA::snmpd"
+include_recipe "CHA::ad_auth"

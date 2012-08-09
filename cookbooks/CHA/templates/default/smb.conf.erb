@@ -1,0 +1,19 @@
+security = ads
+workgroup = chahq
+realm = CHAHQ.LOCAL
+
+server signing = auto
+client use spnego = no
+encrypt passwords = yes
+winbind uid = 10000-50000
+winbind gid = 10000-50000
+winbind separator = +
+template shell = /bin/bash
+template homedir = /home/%U
+winbind use default domain = yes
+winbind offline logon = false
+winbind nested groups = yes
+
+log level = 3
+password server = auth.chahq.local
+prefered master = no

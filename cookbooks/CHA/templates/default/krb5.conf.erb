@@ -1,0 +1,17 @@
+[logging]
+default = FILE:
+kdc = FILE:
+admin_server = FILE:
+
+[libdefaults]
+default_realm = CHAHQ.LOCAL
+
+[realms]
+CHAHQ.LOCAL = {
+default_domain = CHAHQ.LOCAL
+kdc = auth.chahq.local:88
+admin_server = auth.chahq.local:464
+}
+
+[domain_realm]
+.kerberos.server = CHAHQ.LOCAL
