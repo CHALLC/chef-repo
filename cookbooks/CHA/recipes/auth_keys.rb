@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: CHA
-# Recipe:: snmpd
+# Recipe:: auth_keys
 # Author:: Andrew Brader (<abrader@challc.net>)
 #
 # Copyright 2012, CHA, LLC
@@ -17,29 +17,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package "net-snmp" do
-  action :install
+template "/root/.ssh/authorized_keys" do
+  source "authorized_keys.erb"
+  owner "root"
+  group "root"
+  mode "0644"
 end
-
-service "snmpd" do
-  supports :status => true, :restart => true
-  action [ :enable, :start ]
-end
-
-if node[:ipaddress] =~ /192.168/
-  template "/etc/snmp/snmpd.conf" do
-    source "hq_kvm_snmpd.conf.erb"
-    owner "root"
-    group "root"
-    mode "0644"
-    notifies :restart, resources(:service => "snmpd")
-  end
-elsif node[:ipaddress] =~ /10.10.10/
-   template "/etc/snmp/snmpd.conf" do
-     source "de_kvm_snmpd.conf.erb"
-     owner "root"
-     group "root"
-     mode "0644"
-     notifies :restart, resources(:service => "snmpd")
-   end
- end
