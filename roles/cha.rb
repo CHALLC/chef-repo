@@ -1,6 +1,6 @@
 name "CHA"
 description "All CHA system hardening"
 run_list [
-    "recipe[CHA]"
+    "recipe[CHA]", "recipe[ntp]"
   ]
   

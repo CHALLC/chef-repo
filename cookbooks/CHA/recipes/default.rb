@@ -17,5 +17,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "auth_keys"
-#include_recipe "snmpd"
+include_recipe "CHA::auth_keys"
+include_recipe "CHA::snmpd"
