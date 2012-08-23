@@ -1,6 +1,5 @@
-#
 # Cookbook Name:: CHA
-# Recipe:: default
+# Recipe:: ad_auth
 # Author:: Andrew Brader (<abrader@challc.net>)
 #
 # Copyright 2012, CHA, LLC
@@ -17,7 +16,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "CHA::auth_keys"
-include_recipe "CHA::snmpd"
-include_recipe "CHA::ad_auth"
-include_recipe "CHA::sudoers"
+template "/etc/pam.d/system-auth" do
+  source "pam-system-auth.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
+template "/etc/sudoers" do
+  source "sudoers.erb"
+  owner "root"
+  group "root"
+  mode "0440"
+end
