@@ -21,9 +21,17 @@ if node[:platform] == "centos"  && node[:platform_version].to_i < 6
   package "sysklogd" do
     action :install
   end
+  service "syslog" do
+    supports :status => true, :restart => true
+    action [ :enable, :start ]
+  end
 elsif node[:platform] == "centos"
   package "rsyslog" do
     action :install
+  end
+  service "rsyslog" do
+    supports :status => true, :restart => true
+    action [ :enable, :start ]
   end
 end
 
