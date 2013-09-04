@@ -34,12 +34,12 @@ if node[:ipaddress] =~ /192.168/
     mode "0644"
     notifies :restart, resources(:service => "snmpd")
   end
-elsif node[:ipaddress] =~ /10.10.10/
-   template "/etc/snmp/snmpd.conf" do
-     source "de_kvm_snmpd.conf.erb"
-     owner "root"
-     group "root"
-     mode "0644"
-     notifies :restart, resources(:service => "snmpd")
-   end
- end
+else
+  template "/etc/snmp/snmpd.conf" do
+    source "de_kvm_snmpd.conf.erb"
+    owner "root"
+    group "root"
+    mode "0644"
+    notifies :restart, resources(:service => "snmpd")
+  end
+end
