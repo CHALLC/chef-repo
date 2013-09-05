@@ -29,6 +29,12 @@ elsif node[:platform] == "centos"
   package "rsyslog" do
     action :install
   end
+  directory "/var/spool/rsyslog" do
+    owner "root"
+    group "root"
+    mode 0755
+    action :create
+  end
   service "rsyslog" do
     supports :status => true, :restart => true
     action [ :enable, :start ]
