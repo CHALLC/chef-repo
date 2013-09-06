@@ -1,4 +1,4 @@
-name 'cha_base'
+name 'base'
 description 'Base role for all CHA servers'
 
 run_list(
